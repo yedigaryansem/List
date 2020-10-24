@@ -14,13 +14,11 @@ class Main:
         self.__car_mark = car_mark
 
     def enter_to_environment(self):
-
         """Entering to environment.(environment should be Link)"""
 
         self.driver.get(self.__environment)
 
     def go_to_cars_page(self):
-
         """Going to cars page with actions"""
 
         __first_window = self.driver.find_element_by_xpath(FIRST_WINDOW)
@@ -35,7 +33,6 @@ class Main:
         self.action.reset_actions()
 
     def pick_cars_mark(self):
-
         """Opel,Mercedes etc..."""
 
         __mark_type = self.driver.find_element_by_xpath(MARK_TYPE)
@@ -61,7 +58,6 @@ class Main:
         return __count
 
     def cars_count(self):
-
         """Calculating all cars count in all pages"""
 
         __first_page = self.__cars_count_in_page()
@@ -70,16 +66,16 @@ class Main:
 
         __total_cars_count = __first_page * __page_count + __last_page
 
+        print(__total_cars_count)
         return __total_cars_count
 
     def liking(self):
-        car = CAR_FOR_LIKING
-        liker = LIKER
+        car = CAR_FOR_LIKING  # XPath
+        liker = LIKER   # XPath
         a = Like(self.driver, car, liker)
         a.try_to_like()
 
     def go_to_fav_pub_page(self):
-
         """Go To Favourite Publications Page"""
 
         self.action = ActionChains(self.driver)
@@ -88,12 +84,4 @@ class Main:
 
         favourite_publications = self.driver.find_element_by_xpath(FAVOURITE_PUBLICATION)
         favourite_publications.click()
-
-
-main = Main("audi", ENVIRONMENT)
-main.enter_to_environment()
-main.go_to_cars_page()
-main.pick_cars_mark()
-print(main.cars_count())
-main.liking()
 
